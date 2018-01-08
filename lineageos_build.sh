@@ -23,7 +23,7 @@ wget https://github.com/ErnyTech/Scripts/raw/master/lineageos_build.sh -O lineag
 md5sum=$(md5sum lineageos_build.sh)
 newmd5sum=$(md5sum lineageos_build.sh.new)
 
-if [ "$newmd5sum" != "$md5sum" ]:
+if [ "$newmd5sum" -ne "$md5sum" ];
 then
 cat lineageos_build.sh.new > lineageos_build.sh
 source lineageos_build.sh
