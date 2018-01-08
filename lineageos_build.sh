@@ -18,6 +18,18 @@ export TERM=xterm
     cya=$(tput setaf 6)             #  cyan
     txtrst=$(tput sgr0)             #  Reset
 
+# Auto update script
+wget https://github.com/ErnyTech/Scripts/raw/master/lineageos_build.sh -O lineageos_build.sh.new
+md5sum=$(md5sum lineageos_build.sh)
+newmd5sum=$(md5sum lineageos_build.sh.new)
+
+if [ $newmd5sum != $md5sum ]:
+then
+cat lineageos_build.sh.new > lineageos_build.sh
+source lineageos_build.sh
+exit
+fi
+
 # CCACHE UMMM!!! Cooks my builds fast
 
 if [ "$use_ccache" = "yes" ];
