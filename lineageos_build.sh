@@ -26,6 +26,9 @@ newmd5sum=$(md5sum lineageos_build.sh.new)
 if [ "$newmd5sum" != "$md5sum" ];
 then
 cat lineageos_build.sh.new > lineageos_build.sh
+echo $md5sum
+echo $newmd5sum
+read
 source lineageos_build.sh
 exit
 fi
