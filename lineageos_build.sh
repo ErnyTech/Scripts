@@ -7,7 +7,7 @@
 # Some User's Details. Please fill it with your own details.
 
 # Replace "legacy" with your own SSH Username in lowercase
-username=legacy
+username=erny
 
 # Colors makes things beautiful
 export TERM=xterm
@@ -34,6 +34,7 @@ export CCACHE_DIR=/home/ccache/$username
 ccache -C
 wait
 echo -e ${grn}"CCACHE Cleared"${txtrst};
+exit 0
 fi
 
 # Its Clean Time
@@ -42,9 +43,10 @@ then
 make clean && make clobber
 wait
 echo -e ${cya}"OUT dir from your repo deleted"${txtrst};
+exit '
 fi
 
 # Build ROM
 . build/envsetup.sh
-lunch "$lunch_command"_"$device"-userdebug
-make "$target_command" -j8
+breakfast $device
+brunch $device
